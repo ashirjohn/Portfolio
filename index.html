@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashir John | Web Developer & AI Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #2563eb;
+            --accent-color: #38bdf8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 2rem; /* Adjusted top padding for image */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center-align for image */
+        }
+
+        /* Profile Image Styles */
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--bg-white);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%; /* Adjusted to center the face */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .about-card {
+            background-color: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-sub {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-card {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: #090d16;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .profile-img-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Ashir <span>John</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education & Certs</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="profile-img-container">
+                <img src="profile.jpeg" alt="Ashir John Profile Image">
+            </div>
+            <h1>Hi, I'm <span>Ashir John</span></h1>
+            <h2>Web Developer & Generative AI Practitioner</h2>
+            <p>Computer Science student at Kohat University of Science and Technology, passionate about building responsive web applications and exploring modern AI integrations.</p>
+            <div class="btn-container">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-card">
+            <p>Welcome! I am <strong>Ashir John</strong>, a dedicated Web Developer currently pursuing my degree at <strong>Kohat University of Science and Technology (KUST)</strong>.</p>
+            <p>I specialize in crafting clean, responsive, and user-friendly websites. Alongside my Web Development core, I actively expand my expertise into Artificial Intelligence, holding a specialized certification in Generative AI from Pak Angels.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education & Certifications</h2>
+        <div class="grid-2">
+            <div class="card">
+                <span class="card-tag">Education</span>
+                <h3>Kohat University of Science and Technology</h3>
+                <div class="card-sub">Bachelor of Science in Computer Science</div>
+                <p>Acquiring strong fundamentals in software engineering, algorithms, database systems, and modern web application development technologies.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-tag">Certification</span>
+                <h3>Pak Angels</h3>
+                <div class="card-sub">Certificate in Generative AI</div>
+                <p>Completed practical coursework and assessment focused on Generative AI concepts, prompt engineering, multi-agent frameworks, and AI workflows.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Building semantic, accessible, and structured web interfaces.</p>
+                <div class="skills-container">
+                    <span class="skill-badge">HTML5</span>
+                    <span class="skill-badge">CSS3</span>
+                    <span class="skill-badge">Responsive Design</span>
+                    <span class="skill-badge">Flexbox & Grid</span>
+                    <span class="skill-badge">UI/UX Basics</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Artificial Intelligence & Core CS</h3>
+                <p>Leveraging cutting-edge AI technologies and foundational computer science skills.</p>
+                <div class="skills-container">
+                    <span class="skill-badge">Generative AI</span>
+                    <span class="skill-badge">Prompt Engineering</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Portfolio Website</h3>
+                <div class="card-sub">HTML5 / CSS3</div>
+                <p>A sleek, professional portfolio site built completely using standard HTML and CSS without external dependencies.</p>
+            </div>
+            
+            <div class="card">
+                <h3>AI Engineering Showcase</h3>
+                <div class="card-sub">Generative AI / Python</div>
+                <p>Demonstration projects applying Generative AI principles developed during certification coursework.</p>
+            </div>
+
+            <div class="card">
+                <h3>Responsive Web UI</h3>
+                <div class="card-sub">Web Development</div>
+                <p>Custom dynamic layout implementations using modern CSS Grid and Flexbox techniques.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-card">
+            <h3>Let's Work Together</h3>
+            <p>I am open to web development opportunities, freelancing, and collaborative AI projects.</p>
+            <div class="btn-container">
+                <a href="mailto:ashirjohn@example.com" class="btn btn-primary">Send an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ashir John. All rights reserved. | Kohat University of Science and Technology</p>
+    </footer>
+
+</body>
+</html>
